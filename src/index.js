@@ -1,5 +1,4 @@
 module.exports = function toReadable (num) {
-   // const toReadable = (num) => {
    // const singleNum = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
    const singleNum = {
       0: 'zero',
@@ -91,10 +90,12 @@ module.exports = function toReadable (num) {
       let double = num.split('').splice(1,2).join().replace(',','');
       (double > 0 && double < 10) ? result = findSingleNumFunc(num[0]) + ' hundred ' + findSingleNumFunc(oneNum) :
       (double < 20 && double > 0) ? result = findSingleNumFunc(num[0]) + ' hundred ' + findDoubleNumFunc(double) : 
+      (double === '00') ? result = findSingleNumFunc(num[0]) + ' hundred':
       result = findSingleNumFunc(num[0]) + ' hundred ' + findTyNumberFunc(double);
    }
-console.log(result);
+
    return result;
 }
+
 
 
